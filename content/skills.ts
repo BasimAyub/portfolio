@@ -19,9 +19,9 @@ export const skillGroups = [
   },
   {
     slug: "backend",
-    title: "Backend engineering",
+    title: "Backend & APIs",
     blurb:
-      "APIs, service design, auth, and asynchronous workflows that stay clean as products grow.",
+      "Microservices, API design, auth, and async workflows built to stay clean as products scale.",
     skills: [
       "Node.js",
       "Express",
@@ -33,15 +33,15 @@ export const skillGroups = [
       "GraphQL",
       "Microservices",
       "WebSockets",
-      "Background processing",
+      "Event-driven architectures",
       "Secure Authentication (JWT/OAuth)"
     ]
   },
   {
-    slug: "data-platform",
-    title: "Data and platform",
+    slug: "data-cloud",
+    title: "Data, cloud & infra",
     blurb:
-      "Data models, pipelines, and operational infrastructure that support performance and delivery confidence.",
+      "Production-grade pipelines, cloud infrastructure, and operational systems built for reliability at scale.",
     skills: [
       "PostgreSQL",
       "MongoDB",
@@ -49,31 +49,29 @@ export const skillGroups = [
       "BigQuery",
       "Redis",
       "AWS",
-      "Google Cloud Platform",
+      "Google Cloud Platform (GCP)",
+      "Pub/Sub",
       "Docker",
       "CI/CD pipelines",
-      "Data pipelines",
-      "Event-driven architectures"
+      "Data ingestion pipelines",
+      "Performance optimisation"
     ]
   },
   {
-    slug: "product-ai",
-    title: "Product and AI leverage",
+    slug: "ai-systems",
+    title: "AI & agent systems",
     blurb:
-      "System design, OpenAI integrations, and AI-assisted development used with proper judgement, not theatre.",
+      "Production-ready AI integrations — not demos. RAG pipelines, multi-agent orchestration, and LLM evaluation built to work reliably under real load.",
     skills: [
-      "OpenAI API integrations",
-      "LLM-based features",
-      "Cursor",
-      "GitHub Copilot",
-      "AI-assisted development",
-      "Unit Testing",
-      "API Integration",
-      "System Design",
-      "Scalable Architecture",
-      "Performance Optimisation",
-      "Remote Collaboration",
-      "Agile/Scrum"
+      "OpenAI API (GPT-4o, embeddings)",
+      "RAG pipelines",
+      "Multi-agent orchestration",
+      "LLM integration & structured output",
+      "ML scoring pipelines (Python)",
+      "Prompt engineering",
+      "AI-assisted development (Cursor, Copilot)",
+      "NLP / OCR pipelines",
+      "Evaluation & testing for LLM outputs"
     ]
   }
 ] as const;

@@ -27,6 +27,11 @@ export function SkillsSection() {
       return;
     }
 
+    // Don't load the heavy 3D scene on mobile — section is hidden via CSS
+    if (window.matchMedia("(max-width: 860px)").matches) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -48,7 +53,7 @@ export function SkillsSection() {
     <Section id="skills" ref={sectionRef}>
       <AnimatedReveal>
         <div className="section-heading section-heading--narrow">
-          <p className="eyebrow">Capabilities</p>
+          <p className="eyebrow">Skills</p>
         </div>
       </AnimatedReveal>
 

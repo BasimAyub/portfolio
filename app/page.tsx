@@ -4,8 +4,6 @@ import { Footer } from "@/components/sections/Footer";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { ProofSection } from "@/components/sections/ProofSection";
-import { ProcessSection } from "@/components/sections/ProcessSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { SiteHeader } from "@/components/common/SiteHeader";
@@ -22,8 +20,6 @@ export default function HomePage() {
         <AmbientBackground />
         <Hero />
         <TechMarquee />
-        <ProofSection />
-        <ProcessSection />
         <ExperienceSection />
         <CaseStudiesSection />
         <SkillsSection />

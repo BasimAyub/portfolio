@@ -29,8 +29,8 @@ export const caseStudies: CaseStudy[] = [
       "Showed strong ownership across architecture, backend delivery, and AI-adjacent system design."
     ],
     exampleMetrics: [
-      "Reduced processing latency by around 40 per cent.",
-      "Handled high-volume asynchronous workloads with stable throughput."
+      "Reduced processing latency by 40%.",
+      "Sustained stable throughput across high-volume async ingestion pipelines."
     ],
     githubHref: "https://github.com/BasimAyub"
   },
@@ -51,8 +51,8 @@ export const caseStudies: CaseStudy[] = [
       "Balanced backend performance work with frontend product usability."
     ],
     exampleMetrics: [
-      "Improved API response times by around 35 per cent.",
-      "Reduced data inconsistency issues across third-party sources."
+      "Improved API response times by 35%.",
+      "Eliminated data inconsistency errors across three third-party auction sources."
     ],
     githubHref: "https://github.com/BasimAyub"
   },
@@ -73,8 +73,8 @@ export const caseStudies: CaseStudy[] = [
       "Strengthened backend performance in a system with real operational complexity."
     ],
     exampleMetrics: [
-      "Improved data retrieval efficiency in high-load scenarios.",
-      "Reduced system bottlenecks across critical workflows."
+      "Improved data retrieval throughput under high-load enterprise workloads.",
+      "Reduced system bottlenecks across critical integration paths."
     ],
     githubHref: "https://github.com/BasimAyub"
   }

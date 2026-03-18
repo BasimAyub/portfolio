@@ -30,18 +30,3 @@ export const experienceTimeline = [
     ]
   }
 ] as const;
-
-export const differentiators = [
-  {
-    title: "Ownership from idea to production",
-    body: "I take work from concept and architecture through delivery and iteration, not just implementation."
-  },
-  {
-    title: "Speed under ambiguity",
-    body: "I can move quickly when requirements are fuzzy without letting the system or product direction get messy."
-  },
-  {
-    title: "AI used in real engineering workflows",
-    body: "I use Cursor, Claude, and agent-style workflows to speed up delivery, debugging, and system design."
-  }
-] as const;
