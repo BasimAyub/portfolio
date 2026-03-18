@@ -11,7 +11,7 @@ export function ContactSection() {
         <Card tone="elevated" className="contact-panel">
           <div className="contact-panel__copy">
             <p className="eyebrow">Get in touch</p>
-            <h2>Let's work together.</h2>
+            <h2>Let&apos;s work together.</h2>
             <p>
               Open to senior engineering roles, consulting, and interesting product conversations.
               My inbox is always open.

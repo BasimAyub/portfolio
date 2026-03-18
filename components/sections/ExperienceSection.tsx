@@ -21,7 +21,7 @@ export function ExperienceSection() {
       <AnimatedReveal>
         <div className="section-heading section-heading--narrow">
           <p className="eyebrow">Experience</p>
-          <h2>Where I've worked.</h2>
+          <h2>Where I&apos;ve worked.</h2>
         </div>
       </AnimatedReveal>
 

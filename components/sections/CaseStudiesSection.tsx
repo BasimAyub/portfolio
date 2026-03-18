@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { AnimatedReveal } from "@/components/common/AnimatedReveal";
 import { Button } from "@/components/primitives/Button";
@@ -14,14 +14,12 @@ const tabLabel = (title: string) => title.split(" ").slice(0, 2).join(" ");
 
 function CaseStudyCard({
   study,
-  index,
   expandedSlug,
   setExpandedSlug,
 }: {
   study: (typeof caseStudies)[number];
-  index: number;
   expandedSlug: string | null;
-  setExpandedSlug: (s: string | null) => void;
+  setExpandedSlug: React.Dispatch<React.SetStateAction<string | null>>;
 }) {
   const isExpanded = expandedSlug === study.slug;
   const visibleStack = isExpanded ? study.stack : study.stack.slice(0, 4);
@@ -134,7 +132,7 @@ export function CaseStudiesSection() {
       <AnimatedReveal>
         <div className="section-heading">
           <p className="eyebrow">Selected work</p>
-          <h2>Things I've built.</h2>
+          <h2>Things I&apos;ve built.</h2>
         </div>
       </AnimatedReveal>
 
@@ -144,7 +142,7 @@ export function CaseStudiesSection() {
           <AnimatedReveal key={study.slug} delay={index * 0.08}>
             <CaseStudyCard
               study={study}
-              index={index}
+
               expandedSlug={expandedSlug}
               setExpandedSlug={setExpandedSlug}
             />
@@ -178,7 +176,7 @@ export function CaseStudiesSection() {
           >
             <CaseStudyCard
               study={mobileStudy}
-              index={0}
+
               expandedSlug={expandedSlug}
               setExpandedSlug={setExpandedSlug}
             />

@@ -16,7 +16,7 @@ function TestimonialCard({
   return (
     <Card tone="elevated" className="testimonial-card">
       <div className="testimonial-card__top">
-        <p className="quote-mark">"</p>
+        <p className="quote-mark">&ldquo;</p>
         <span className="badge">{item.source}</span>
       </div>
       <p>{item.quote}</p>
