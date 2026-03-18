@@ -42,11 +42,10 @@ export function Hero() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 34, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 34 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 0.78, ease: [0.16, 1, 0.3, 1] }
     }
   };

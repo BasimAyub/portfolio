@@ -34,7 +34,7 @@ export function SkillsSection() {
           observer.disconnect();
         }
       },
-      { rootMargin: "320px 0px" }
+      { rootMargin: "1200px 0px" }
     );
 
     observer.observe(sectionRef.current);
