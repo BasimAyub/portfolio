@@ -1,0 +1,20 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1200" fill="#07111F"/>
+  <rect x="56" y="56" width="788" height="1088" rx="36" fill="url(#paint0_linear)"/>
+  <circle cx="450" cy="380" r="190" fill="url(#paint1_radial)"/>
+  <path d="M450 620C304.771 620 187 737.771 187 883V996H713V883C713 737.771 595.229 620 450 620Z" fill="#0D2238"/>
+  <path d="M450 235C367.71 235 301 301.71 301 384C301 466.29 367.71 533 450 533C532.29 533 599 466.29 599 384C599 301.71 532.29 235 450 235Z" fill="#16395A"/>
+  <path d="M191 1002H709" stroke="#7EF9D6" stroke-opacity="0.35" stroke-width="4"/>
+  <path d="M232 1044H668" stroke="#70D4FF" stroke-opacity="0.25" stroke-width="4"/>
+  <text x="450" y="1088" fill="#F5D68F" font-family="Arial, sans-serif" font-size="36" text-anchor="middle">Replace with your portrait</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="450" y1="56" x2="450" y2="1144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10253D"/>
+      <stop offset="1" stop-color="#08121D"/>
+    </linearGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(450 380) rotate(90) scale(190)">
+      <stop stop-color="#7EF9D6" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#7EF9D6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
