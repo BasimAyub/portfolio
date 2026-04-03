@@ -58,8 +58,8 @@ Update:
 - `content/profile.ts`
 - `content/case-studies.ts`
 - `content/testimonials.ts`
-- `public/images/profile-placeholder.svg`
-- `public/resume/senior-software-engineer-resume.pdf`
+- `public/images/profile.png`
+- `public/resume/Resume.pdf`
 
 ## Quality checks
 

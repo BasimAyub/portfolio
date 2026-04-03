@@ -37,9 +37,9 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link href={profile.resumeHref} className="button button--ghost" download>
+          <a href={profile.resumeHref} className="button button--ghost" target="_blank" rel="noreferrer">
             Résumé
-          </Link>
+          </a>
         </nav>
 
         {/* Hamburger — mobile only */}
@@ -73,14 +73,15 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <Link
+              <a
                 href={profile.resumeHref}
                 className="button button--ghost"
-                download
+                target="_blank"
+                rel="noreferrer"
                 onClick={close}
               >
                 Résumé
-              </Link>
+              </a>
             </nav>
           </motion.div>
         )}

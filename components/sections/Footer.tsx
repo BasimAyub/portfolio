@@ -25,9 +25,9 @@ export function Footer() {
             <Link href={profile.linkedin} target="_blank" rel="noreferrer">
               LinkedIn ↗
             </Link>
-            <Link href={profile.resumeHref} download>
+            <a href={profile.resumeHref} target="_blank" rel="noreferrer">
               Résumé ↓
-            </Link>
+            </a>
           </div>
         </div>
 

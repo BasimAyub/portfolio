@@ -84,7 +84,7 @@ export function Hero() {
             <Button href='#experience' variant='secondary'>
               Experience
             </Button>
-            <Button href={profile.resumeHref} variant='ghost' download>
+            <Button href={profile.resumeHref} variant='ghost' target="_blank" rel="noreferrer">
               Résumé
             </Button>
           </motion.div>
