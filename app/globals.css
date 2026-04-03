@@ -832,7 +832,6 @@ button {
   white-space: nowrap;
 }
 
-.case-study-grid,
 .testimonial-grid {
   display: grid;
   gap: 1.25rem;
@@ -993,11 +992,6 @@ button {
 .case-study-card h3 {
   font-size: clamp(1.15rem, 1.6vw, 1.6rem);
 }
-
-.case-study-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 
 .case-study-card {
   display: grid;
@@ -1196,7 +1190,6 @@ button {
 
 /* ── Mobile section tabs (Work & Recommendations) ───── */
 
-.case-study-mobile,
 .testimonial-mobile {
   display: none; /* shown at ≤860px via media query */
 }
@@ -1242,6 +1235,105 @@ button {
 .section-tab:hover:not(.section-tab--active) {
   border-color: var(--colour-border-strong);
   color: var(--colour-text-primary);
+}
+
+/* ── Case study tab nav (.cs-nav) ───────────────────── */
+
+.cs-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.cs-nav__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 1.1rem;
+  border: 1px solid var(--colour-border-soft);
+  background: rgba(10, 17, 31, 0.72);
+  color: var(--colour-text-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast) ease,
+    background var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease;
+}
+
+.cs-nav__tab--active {
+  background:
+    linear-gradient(135deg, rgba(115, 242, 255, 0.14), rgba(152, 255, 216, 0.06)),
+    rgba(12, 22, 40, 0.94);
+  border-color: rgba(115, 242, 255, 0.32);
+  color: var(--colour-text-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.cs-nav__tab:hover:not(.cs-nav__tab--active) {
+  border-color: var(--colour-border-strong);
+  color: var(--colour-text-primary);
+  background: rgba(12, 20, 36, 0.86);
+}
+
+.cs-nav__num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  background: rgba(115, 242, 255, 0.05);
+  border: 1px solid rgba(115, 242, 255, 0.1);
+  color: var(--colour-accent-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: background var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.cs-nav__tab--active .cs-nav__num {
+  background: rgba(115, 242, 255, 0.12);
+  border-color: rgba(115, 242, 255, 0.28);
+}
+
+.cs-nav__label {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  min-width: 0;
+}
+
+/* On small screens reduce padding; labels stay in a single row */
+@media (max-width: 640px) {
+  .cs-nav {
+    gap: 0.45rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .cs-nav__tab {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+  }
+
+  .cs-nav__label {
+    font-size: 0.75rem;
+  }
+
+  .cs-nav__num {
+    width: 1.7rem;
+    height: 1.7rem;
+    font-size: 0.65rem;
+  }
 }
 
 /* ── Mobile nav drawer ─────────────────────────────── */
@@ -1433,7 +1525,6 @@ button {
     margin: 0 auto;
   }
 
-  .case-study-grid,
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1508,7 +1599,6 @@ button {
     right: 0;
   }
 
-  .case-study-grid,
   .case-study-card__summary,
   .case-study-card__metrics,
   .testimonial-grid,
@@ -1516,13 +1606,11 @@ button {
     grid-template-columns: 1fr;
   }
 
-  /* Swap to mobile tab layouts */
-  .case-study-grid,
+  /* Swap testimonials to mobile tab layout */
   .testimonial-grid {
     display: none;
   }
 
-  .case-study-mobile,
   .testimonial-mobile {
     display: grid;
     gap: 1.25rem;

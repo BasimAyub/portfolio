@@ -1,66 +1,79 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { AnimatedReveal } from "@/components/common/AnimatedReveal";
-import { Button } from "@/components/primitives/Button";
 import { Card } from "@/components/primitives/Card";
 import { Section } from "@/components/primitives/Section";
 import { caseStudies } from "@/content/case-studies";
 
-/** Short label for the mobile tab pill */
-const tabLabel = (title: string) => title.split(" ").slice(0, 2).join(" ");
+const shortLabel = (title: string) => title.split(" ").slice(0, 2).join(" ");
 
-function CaseStudyCard({
-  study,
-  expandedSlug,
-  setExpandedSlug,
-}: {
-  study: (typeof caseStudies)[number];
-  expandedSlug: string | null;
-  setExpandedSlug: React.Dispatch<React.SetStateAction<string | null>>;
-}) {
-  const isExpanded = expandedSlug === study.slug;
-  const visibleStack = isExpanded ? study.stack : study.stack.slice(0, 4);
+export function CaseStudiesSection() {
+  const [activeSlug, setActiveSlug] = useState(caseStudies[0]?.slug ?? "");
+  const study = caseStudies.find((s) => s.slug === activeSlug) ?? caseStudies[0];
 
   return (
-    <Card tone="elevated" className="case-study-card">
-      <div className="case-study-card__header">
-        <div>
-          <p className="eyebrow">{study.strapline}</p>
-          <h3>{study.title}</h3>
+    <Section id="case-studies">
+      <AnimatedReveal>
+        <div className="section-heading">
+          <p className="eyebrow">Selected work</p>
+          <h2>Things I&apos;ve built.</h2>
         </div>
-      </div>
+      </AnimatedReveal>
 
-      <p>{study.overview}</p>
+      {/* Tab switcher — 3 equal buttons, always one row */}
+      <AnimatedReveal delay={0.06}>
+        <div className="cs-nav" role="tablist" aria-label="Select case study">
+          {caseStudies.map((s, i) => (
+            <button
+              key={s.slug}
+              role="tab"
+              aria-selected={s.slug === activeSlug}
+              aria-controls="cs-panel"
+              className={`cs-nav__tab${s.slug === activeSlug ? " cs-nav__tab--active" : ""}`}
+              onClick={() => setActiveSlug(s.slug)}
+            >
+              <span className="cs-nav__num">0{i + 1}</span>
+              <span className="cs-nav__label">{shortLabel(s.title)}</span>
+            </button>
+          ))}
+        </div>
+      </AnimatedReveal>
 
-      <div className="case-study-card__stack">
-        {visibleStack.map((item) => (
-          <span key={item} className="chip">
-            {item}
-          </span>
-        ))}
-        {!isExpanded && study.stack.length > visibleStack.length ? (
-          <span className="chip">{`+${study.stack.length - visibleStack.length} more`}</span>
-        ) : null}
-      </div>
+      {/* Full case study content — animates on switch */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={study.slug}
+          id="cs-panel"
+          role="tabpanel"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Card tone="elevated" className="case-study-card">
+            {/* Header */}
+            <div className="case-study-card__header">
+              <div>
+                <p className="eyebrow">{study.strapline}</p>
+                <h3>{study.title}</h3>
+              </div>
+            </div>
 
-      <div className="case-study-card__teaser">
-        <strong>Quick read</strong>
-        <p>{study.impact[0]}</p>
-      </div>
+            <p>{study.overview}</p>
 
-      <AnimatePresence initial={false}>
-        {isExpanded ? (
-          <motion.div
-            key={`${study.slug}-details`}
-            className="case-study-card__details"
-            initial={{ opacity: 0, height: 0, y: 8 }}
-            animate={{ opacity: 1, height: "auto", y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -8 }}
-            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          >
+            {/* Full tech stack — always visible */}
+            <div className="case-study-card__stack">
+              {study.stack.map((item) => (
+                <span key={item} className="chip">
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* Problem + Role */}
             <div className="case-study-card__summary">
               <div>
                 <strong>Problem</strong>
@@ -72,6 +85,7 @@ function CaseStudyCard({
               </div>
             </div>
 
+            {/* Impact bullets */}
             <div className="example-metrics">
               <strong>What this proves</strong>
               <ul className="feature-list">
@@ -81,6 +95,7 @@ function CaseStudyCard({
               </ul>
             </div>
 
+            {/* Key metrics */}
             <div className="case-study-card__metrics">
               {study.exampleMetrics.slice(0, 2).map((metric) => (
                 <span key={metric} className="case-study-card__metric">
@@ -88,101 +103,9 @@ function CaseStudyCard({
                 </span>
               ))}
             </div>
-          </motion.div>
-        ) : null}
+          </Card>
+        </motion.div>
       </AnimatePresence>
-
-      <div className="button-row case-study-card__actions">
-        <Button
-          type="button"
-          variant="secondary"
-          aria-expanded={isExpanded}
-          onClick={() =>
-            setExpandedSlug((current) =>
-              current === study.slug ? null : study.slug
-            )
-          }
-        >
-          {isExpanded ? "Hide details" : "View details"}
-        </Button>
-        <Button href="#contact" variant="ghost">
-          Discuss this build
-        </Button>
-        <Button href={study.githubHref} variant="ghost" target="_blank" rel="noreferrer">
-          GitHub
-        </Button>
-      </div>
-    </Card>
-  );
-}
-
-export function CaseStudiesSection() {
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(
-    caseStudies[0]?.slug ?? null
-  );
-  const [mobileSlug, setMobileSlug] = useState<string>(
-    caseStudies[0]?.slug ?? ""
-  );
-
-  const mobileStudy =
-    caseStudies.find((s) => s.slug === mobileSlug) ?? caseStudies[0];
-
-  return (
-    <Section id="case-studies">
-      <AnimatedReveal>
-        <div className="section-heading">
-          <p className="eyebrow">Selected work</p>
-          <h2>Things I&apos;ve built.</h2>
-        </div>
-      </AnimatedReveal>
-
-      {/* Desktop: all cards in a grid */}
-      <div className="case-study-grid">
-        {caseStudies.map((study, index) => (
-          <AnimatedReveal key={study.slug} delay={index * 0.08}>
-            <CaseStudyCard
-              study={study}
-
-              expandedSlug={expandedSlug}
-              setExpandedSlug={setExpandedSlug}
-            />
-          </AnimatedReveal>
-        ))}
-      </div>
-
-      {/* Mobile: tab picker + single card */}
-      <div className="case-study-mobile">
-        <div className="section-tabs" role="tablist" aria-label="Select project">
-          {caseStudies.map((study) => (
-            <button
-              key={study.slug}
-              role="tab"
-              aria-selected={study.slug === mobileSlug}
-              className={`section-tab${study.slug === mobileSlug ? " section-tab--active" : ""}`}
-              onClick={() => setMobileSlug(study.slug)}
-            >
-              {tabLabel(study.title)}
-            </button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={mobileStudy.slug}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <CaseStudyCard
-              study={mobileStudy}
-
-              expandedSlug={expandedSlug}
-              setExpandedSlug={setExpandedSlug}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
     </Section>
   );
 }
