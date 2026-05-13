@@ -1,22 +1,28 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion } from "framer-motion";
-import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 
-import { AnimatedReveal } from "@/components/common/AnimatedReveal";
-import { Section } from "@/components/primitives/Section";
+import { AnimatedReveal } from '@/components/common/AnimatedReveal';
+import { Section } from '@/components/primitives/Section';
 
-const TechOrbField = dynamic(() => import("@/components/sections/TechOrbField").then((mod) => mod.TechOrbField), {
-  ssr: false,
-  loading: () => (
-    <div className="tech-orbs tech-orbs--loading" aria-hidden="true">
-      <div className="tech-orbs__fallback">
-        <span>Loading interactive tech stack…</span>
+const TechOrbField = dynamic(
+  () =>
+    import('@/components/sections/TechOrbField').then(
+      (mod) => mod.TechOrbField,
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className='tech-orbs tech-orbs--loading' aria-hidden='true'>
+        <div className='tech-orbs__fallback'>
+          <span>Loading interactive tech stack…</span>
+        </div>
       </div>
-    </div>
-  )
-});
+    ),
+  },
+);
 
 export function SkillsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -28,7 +34,7 @@ export function SkillsSection() {
     }
 
     // Don't load the heavy 3D scene on mobile — section is hidden via CSS
-    if (window.matchMedia("(max-width: 860px)").matches) {
+    if (window.matchMedia('(max-width: 860px)').matches) {
       return;
     }
 
@@ -39,7 +45,7 @@ export function SkillsSection() {
           observer.disconnect();
         }
       },
-      { rootMargin: "1200px 0px" }
+      { rootMargin: '1200px 0px' },
     );
 
     observer.observe(sectionRef.current);
@@ -50,34 +56,35 @@ export function SkillsSection() {
   }, [shouldMountScene]);
 
   return (
-    <Section id="skills" ref={sectionRef}>
+    <Section id='skills' ref={sectionRef}>
       <AnimatedReveal>
-        <div className="section-heading section-heading--narrow">
-          <p className="eyebrow">Skills</p>
+        <div className='section-heading section-heading--narrow'>
+          <p className='eyebrow'>Skills</p>
+          <h2>What I work with.</h2>
         </div>
       </AnimatedReveal>
 
       <AnimatedReveal delay={0.08}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode='wait'>
           {shouldMountScene ? (
             <motion.div
-              key="scene"
+              key='scene'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            >
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
               <TechOrbField />
             </motion.div>
           ) : (
             <motion.div
-              key="fallback"
-              className="tech-orbs tech-orbs--loading"
+              key='fallback'
+              className='tech-orbs tech-orbs--loading'
               initial={{ opacity: 0.7 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <div className="tech-orbs__fallback">
-                <span>Interactive tech stack will load as you reach this section.</span>
+              exit={{ opacity: 0 }}>
+              <div className='tech-orbs__fallback'>
+                <span>
+                  Interactive tech stack will load as you reach this section.
+                </span>
               </div>
             </motion.div>
           )}

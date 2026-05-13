@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
 
-import { profile } from "@/content/profile";
+import { profile } from '@/content/profile';
 
 const navItems = [
-  { href: "#experience", label: "Experience" },
-  { href: "#case-studies", label: "Work" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: '#experience', label: 'Experience' },
+  { href: '#case-studies', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export function SiteHeader() {
@@ -19,11 +19,15 @@ export function SiteHeader() {
   const close = () => setOpen(false);
 
   return (
-    <header className="site-header">
+    <header className='site-header'>
       {/* Top bar — always visible */}
-      <div className="shell site-header__inner">
-        <Link href="/" className="brand" aria-label="Go to homepage" onClick={close}>
-          <span className="brand__mark">SE</span>
+      <div className='shell site-header__inner'>
+        <Link
+          href='/'
+          className='brand'
+          aria-label='Go to homepage'
+          onClick={close}>
+          <span className='brand__mark'>SE</span>
           <span>
             <strong>{profile.name}</strong>
             <small>{profile.role}</small>
@@ -31,26 +35,28 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="site-nav" aria-label="Primary">
+        <nav className='site-nav' aria-label='Primary'>
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               {item.label}
             </Link>
           ))}
-          <a href={profile.resumeHref} className="button button--ghost" target="_blank" rel="noreferrer">
+          <a
+            href={profile.resumeHref}
+            className='button button--ghost'
+            target='_blank'
+            rel='noreferrer'>
             Résumé
           </a>
         </nav>
 
         {/* Hamburger — mobile only */}
         <button
-          type="button"
-          className="menu-button"
+          type='button'
+          className='menu-button'
           aria-expanded={open}
-          aria-controls="site-nav-drawer"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="sr-only">Toggle navigation</span>
+          onClick={() => setOpen((v) => !v)}>
+          <span className='sr-only'>Toggle navigation</span>
           <span></span>
           <span></span>
         </button>
@@ -60,14 +66,15 @@ export function SiteHeader() {
       <AnimatePresence>
         {open && (
           <motion.div
-            id="site-nav-drawer"
-            className="site-nav-drawer"
-            initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
-            animate={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
-            exit={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
-            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <nav className="shell site-nav-drawer__inner" aria-label="Primary mobile">
+            id='site-nav-drawer'
+            className='site-nav-drawer'
+            initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
+            animate={{ clipPath: 'inset(0 0 0% 0)', opacity: 1 }}
+            exit={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
+            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}>
+            <nav
+              className='shell site-nav-drawer__inner'
+              aria-label='Primary mobile'>
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} onClick={close}>
                   {item.label}
@@ -75,11 +82,10 @@ export function SiteHeader() {
               ))}
               <a
                 href={profile.resumeHref}
-                className="button button--ghost"
-                target="_blank"
-                rel="noreferrer"
-                onClick={close}
-              >
+                className='button button--ghost'
+                target='_blank'
+                rel='noreferrer'
+                onClick={close}>
                 Résumé
               </a>
             </nav>
