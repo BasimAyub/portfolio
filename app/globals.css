@@ -311,18 +311,35 @@ footer {
 }
 
 .section {
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  padding: clamp(3rem, 5vw, 5rem) 0;
 }
 
 .section-heading {
   display: grid;
   gap: 0.85rem;
   max-width: 44rem;
-  margin-bottom: 3rem;
+  margin: 0 auto 2.25rem; /* auto left/right centres all headings */
+  text-align: center;
 }
 
 .section-heading--narrow {
   max-width: 36rem;
+}
+
+/* Chapter marker — short accent rule above every section eyebrow */
+.section-heading .eyebrow::before {
+  content: "";
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--accent);
+  margin: 0 auto 0.7rem; /* centred to match text alignment */
+  border-radius: 999px;
+}
+
+/* Case Studies — larger h2, this is the portfolio centrepiece */
+#case-studies .section-heading h2 {
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
 }
 
 .eyebrow {
@@ -377,7 +394,7 @@ footer {
   font-weight: 400;
   font-size: var(--type-hero);
   letter-spacing: -0.03em;
-  line-height: 0.96;
+  line-height: 1.05;
   color: var(--text-primary);
   max-width: 14ch;
 }
@@ -666,7 +683,7 @@ footer {
 
 /* ─── Experience ──────────────────────────────────────────────── */
 .experience-section {
-  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 4vw, 4rem);
 }
 
 .experience-timeline {
@@ -677,37 +694,60 @@ footer {
 .experience-item {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: start;
-  padding: 1.75rem 0;
+  padding: 2rem 0;
   border-top: 1px solid var(--border);
 }
 
 .experience-item__year {
   font-size: var(--type-sm);
-  font-weight: 600;
-  color: var(--text-muted);
-  padding-top: 0.3rem;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  color: var(--accent);
+  padding-top: 0.45rem;
+  letter-spacing: 0.04em;
 }
 
 .experience-item__body {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.35rem; /* tight base — h3 margin-bottom controls the larger break */
+}
+
+.experience-item__body .eyebrow {
+  margin-bottom: 0.1rem; /* company name hugs the role title */
 }
 
 .experience-item__body h3 {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
   letter-spacing: -0.02em;
-  margin: 0;
+  margin: 0 0 0.7rem; /* breathing room between role and summary */
 }
 
 .experience-item__body > p {
   margin: 0;
   color: var(--text-secondary);
+}
+
+/* Scoped accent markers for experience bullets only */
+.experience-item__body .feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.25rem;
+}
+
+.experience-item__body .feature-list li {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.experience-item__body .feature-list li::before {
+  content: "—";
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 600;
 }
 
 /* Mobile experience */
@@ -844,14 +884,34 @@ footer {
 }
 
 .case-study-card__metric {
-  display: block;
-  padding: 0.85rem 0.9rem;
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--bg-subtle);
-  color: var(--text-secondary);
+}
+
+.case-study-card__metric-value {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.case-study-card__metric-icon {
+  font-size: 1.25rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.case-study-card__metric-label {
   font-size: var(--type-sm);
-  line-height: 1.55;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 /* Case study tab nav */
@@ -1066,7 +1126,7 @@ footer {
 
 /* ─── Contact ─────────────────────────────────────────────────── */
 .contact-section {
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(3rem, 5vw, 5rem);
 }
 
 .contact-panel {
@@ -1120,9 +1180,34 @@ footer {
 
 .contact-panel__meta {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
   position: relative;
   align-self: center;
+}
+
+.contact-panel__email {
+  margin: 0;
+  font-size: var(--type-sm);
+  color: rgba(249, 247, 244, 0.45);
+  letter-spacing: 0.01em;
+}
+
+.contact-panel__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(249, 247, 244, 0.12);
+}
+
+.contact-panel__social a {
+  font-size: var(--type-sm);
+  color: rgba(249, 247, 244, 0.5);
+  transition: color var(--motion-fast) ease;
+}
+
+.contact-panel__social a:hover {
+  color: rgba(249, 247, 244, 0.9);
 }
 
 .contact-panel .button--primary {
@@ -1281,6 +1366,17 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Laptop & desktop — zero section bottom padding ─────────── */
+@media (min-width: 861px) {
+  .section {
+    padding-bottom: 0;
+  }
+
+  .contact-section {
+    padding-bottom: clamp(3rem, 5vw, 5rem);
   }
 }
 

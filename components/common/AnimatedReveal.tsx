@@ -15,11 +15,11 @@ export function AnimatedReveal({ children, delay = 0, className }: AnimatedRevea
   return (
     <motion.div
       className={className}
-      initial={disabled ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 44, scale: 0.96 }}
-      animate={disabled ? { opacity: 1, y: 0, scale: 1 } : undefined}
-      whileInView={disabled ? undefined : { opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.82, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={disabled ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      animate={disabled ? { opacity: 1, y: 0 } : undefined}
+      whileInView={disabled ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

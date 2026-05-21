@@ -77,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
       'An enterprise data platform focused on cloud-integrated workflows, performance, and reliable access to large-scale file-system metadata.',
     problem:
       'The challenge was handling large metadata workloads and cloud integration flows without introducing performance bottlenecks or fragile operational behaviour.',
-    role: 'Full-Stack / Backend Engineer. I built APIs and services for data access, monitoring, and integration workflows, with a strong focus on performance and observability.',
+    role: 'Senior Full-Stack Engineer. I built APIs and services for data access, monitoring, and integration workflows, with a strong focus on performance and observability.',
     stack: [
       'TypeScript',
       'Node.js',

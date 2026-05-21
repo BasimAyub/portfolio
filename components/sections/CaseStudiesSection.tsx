@@ -10,6 +10,20 @@ import { caseStudies } from '@/content/case-studies';
 
 const shortLabel = (title: string) => title.split(' ').slice(0, 2).join(' ');
 
+/** Splits "Reduced processing latency by 40%." → { value: "40%", label: "Reduced processing latency" } */
+function parseMetric(raw: string): { value: string | null; label: string } {
+  const m = raw.match(/(\d+%|\d+x|\d+\+)/);
+  if (m && m.index !== undefined) {
+    const value = m[0];
+    const label = raw
+      .slice(0, m.index)
+      .replace(/\s*by\s*$/i, '')
+      .trim();
+    return { value, label: label || raw.replace(/\.$/, '').trim() };
+  }
+  return { value: null, label: raw.replace(/\.$/, '').trim() };
+}
+
 export function CaseStudiesSection() {
   const [activeSlug, setActiveSlug] = useState(caseStudies[0]?.slug ?? '');
   const study =
@@ -96,11 +110,19 @@ export function CaseStudiesSection() {
 
             {/* Key metrics */}
             <div className='case-study-card__metrics'>
-              {study.exampleMetrics.slice(0, 2).map((metric) => (
-                <span key={metric} className='case-study-card__metric'>
-                  {metric}
-                </span>
-              ))}
+              {study.exampleMetrics.slice(0, 2).map((metric) => {
+                const { value, label } = parseMetric(metric);
+                return (
+                  <div key={metric} className='case-study-card__metric'>
+                    {value ? (
+                      <span className='case-study-card__metric-value'>{value}</span>
+                    ) : (
+                      <span className='case-study-card__metric-icon' aria-hidden='true'>→</span>
+                    )}
+                    <span className='case-study-card__metric-label'>{label}</span>
+                  </div>
+                );
+              })}
             </div>
           </Card>
         </motion.div>

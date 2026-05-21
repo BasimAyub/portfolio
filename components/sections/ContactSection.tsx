@@ -19,14 +19,17 @@ export function ContactSection() {
           </div>
 
           <div className="contact-panel__meta">
-            <div className="button-column">
-              <Button href={`mailto:${profile.email}`}>Say hello</Button>
-              <Button href={profile.linkedin} variant="secondary" target="_blank" rel="noreferrer">
-                LinkedIn
-              </Button>
-              <Button href={profile.github} variant="ghost" target="_blank" rel="noreferrer">
-                GitHub
-              </Button>
+            <Button href={`mailto:${profile.email}`}>
+              Say hello →
+            </Button>
+            <p className="contact-panel__email">{profile.email}</p>
+            <div className="contact-panel__social">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn ↗
+              </a>
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                GitHub ↗
+              </a>
             </div>
           </div>
         </Card>
