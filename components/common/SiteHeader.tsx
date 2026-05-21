@@ -95,6 +95,18 @@ export function SiteHeader() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}>
+
+              {/* Close button */}
+              <div className='site-nav-drawer__header'>
+                <button
+                  type='button'
+                  className='site-nav-drawer__close'
+                  onClick={close}
+                  aria-label='Close navigation'>
+                  ✕
+                </button>
+              </div>
+
               <nav
                 className='site-nav-drawer__inner'
                 aria-label='Primary mobile'>
@@ -105,7 +117,7 @@ export function SiteHeader() {
                 ))}
                 <a
                   href={profile.resumeHref}
-                  className='button button--ghost'
+                  className='site-nav-drawer__resume'
                   target='_blank'
                   rel='noreferrer'
                   onClick={close}>

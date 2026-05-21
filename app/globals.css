@@ -265,40 +265,95 @@ h1, h2, h3, h4 {
   right: 0;
   bottom: 0;
   z-index: 50;
-  width: min(15rem, 82vw);
+  width: max-content;
+  min-width: 10rem;
   background: var(--bg);
   border-left: 1px solid var(--border);
-  box-shadow: -8px 0 32px rgba(17, 17, 16, 0.10);
+  box-shadow: -12px 0 40px rgba(17, 17, 16, 0.12);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Close button row */
+.site-nav-drawer__header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.site-nav-drawer__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.site-nav-drawer__close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+/* Nav links */
 .site-nav-drawer__inner {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  padding: 1.5rem 1.25rem;
+  padding: 0.5rem 1.75rem 1.75rem;
+  flex: 1;
 }
 
 .site-nav-drawer__inner a {
-  padding: 0.75rem 0.75rem;
+  padding: 0.9rem 0;
   color: var(--text-secondary);
-  font-size: var(--type-base);
-  font-weight: 500;
-  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
   text-align: right;
-  transition: color var(--motion-fast) ease, background var(--motion-fast) ease;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  white-space: nowrap;
+  transition: color var(--motion-fast) ease;
+}
+
+.site-nav-drawer__inner a:last-child {
+  border-bottom: none;
 }
 
 .site-nav-drawer__inner a:hover {
   color: var(--text-primary);
-  background: var(--bg-subtle);
+  background: transparent;
 }
 
-.site-nav-drawer__inner .button {
-  margin-top: 0.5rem;
+/* Résumé — accent coloured, sits below the dividers */
+.site-nav-drawer__resume {
+  display: block;
+  margin-top: 1.25rem;
+  padding: 0;
+  color: var(--accent) !important;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem !important;
   text-align: right;
-  justify-content: flex-end;
-  width: 100%;
+  border-bottom: none !important;
+  white-space: nowrap;
+  transition: opacity var(--motion-fast) ease;
+}
+
+.site-nav-drawer__resume:hover {
+  opacity: 0.75;
+  background: transparent !important;
 }
 
 /* ─── Section base ────────────────────────────────────────────── */
