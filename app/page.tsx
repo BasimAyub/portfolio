@@ -1,4 +1,3 @@
-import { AmbientBackground } from "@/components/common/AmbientBackground";
 import { TechMarquee } from "@/components/common/TechMarquee";
 import { Footer } from "@/components/sections/Footer";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
@@ -17,7 +16,6 @@ export default function HomePage() {
       </a>
       <SiteHeader />
       <main id="main-content">
-        <AmbientBackground />
         <Hero />
         <TechMarquee />
         <ExperienceSection />

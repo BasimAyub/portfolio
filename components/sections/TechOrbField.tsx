@@ -249,7 +249,7 @@ export function TechOrbField() {
 
         {!isCompact ? (
           <EffectComposer enableNormalPass={false}>
-            <N8AO color='#0f002c' aoRadius={2} intensity={1.15} />
+            <N8AO color='#d4cfc8' aoRadius={2} intensity={1.2} />
           </EffectComposer>
         ) : null}
       </Canvas>

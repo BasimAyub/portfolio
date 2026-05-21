@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="site-footer card">
+    <footer className="site-footer">
       <div className="shell">
         {/* Brand + links row */}
         <div className="site-footer__inner">
